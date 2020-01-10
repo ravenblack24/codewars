@@ -32,21 +32,12 @@ Test.assertEquals(absentVowel("Leap year only comes once every four years"), 2);
 
 function absentVowel(x){
 
-var mapping = {
-  "a" : 0,
-  "e" : 1,
-  "i" : 2,
-  "o" : 3,
-  "u" : 4
-}
+  var vowels = ["a","e","i","o","u"];
 
-var vowelList = Object.keys(mapping);
-
-for(var i = 0; i<vowelList.length; i++)
-{
-  if(x.search(vowelList[i]) === -1) {
-    return mapping[vowelList[i]];
+  for(var i = 0; i<vowels.length; i++)
+  {
+    if(x.search(vowels[i]) === -1) {
+      return i;
+    }
   }
-}
-
 }
