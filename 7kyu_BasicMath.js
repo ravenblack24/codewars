@@ -57,9 +57,5 @@ function calculate(str) {
   const regexPlus = /plus/gi;
   const regexMinus = /minus/gi;
 
-  let total = str.replace(regexPlus, "+");
-  total = total.replace(regexMinus, "-");
-  
-  str = eval(total);
-  return str.toString();
+  return eval(str.replace(regexPlus, "+").replace(regexMinus, "-")).toString();
 }
