@@ -119,17 +119,7 @@ for (var i = 0; i < quotes.length; i++) {
 
 String.prototype.toJadenCase = function () {
  
- // Split phrase into array of words
- var wordList = this.split(" "); 
-    
-    for(let i = 0; i < wordList.length; i++)
-    {
-        // Replace first letter with uppercase letter
-        wordList[i] = wordList[i].replace(/^./, function(x) {
-            return x.toUpperCase();
-        });
-    }  
-    
-    // Rejoin words into phrase
-    return wordList.join(" ");    
+ return this.split(" ").map(function(word) {
+         return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(" "); 
 };
