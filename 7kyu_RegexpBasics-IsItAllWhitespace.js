@@ -18,5 +18,5 @@ Test.assertEquals("\n\r\n\r 3".whitespace(), false);
 */
 
 String.prototype.whitespace=function(){
-  return /^(\s+){0,1}$/g.test(this);
+  return /^\s{0,}$/.test(this);
 }
