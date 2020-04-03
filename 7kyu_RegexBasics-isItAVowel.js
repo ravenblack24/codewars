@@ -14,6 +14,5 @@ describe('vowel', () => {
 });
 */
 String.prototype.vowel = function() {
-  let regex = /^(a|e|i|o|u){1}$/ig;
-  return regex.test(this);
+  return /^(a|e|i|o|u){1}$/i.test(this);
 };
