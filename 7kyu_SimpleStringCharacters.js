@@ -25,8 +25,8 @@ function solve(s){
  let numbers = /\d/g;
  let special = /\W/g;
  
- return [s.match((uppercase) || []).length, 
-         s.match((lowercase) || []).length,
-         s.match((numbers) || []).length,
-         s.match((special) || []).length];
+ return [(s.match(uppercase) || []).length, 
+         (s.match(lowercase) || []).length,
+         (s.match(numbers) || []).length,
+         (s.match(special) || []).length];
 }
