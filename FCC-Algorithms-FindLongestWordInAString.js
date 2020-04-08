@@ -22,15 +22,7 @@ findLongestWordLength("What if we try a super-long word such as otorhinolaryngol
 */
 
 function findLongestWordLength(str) {
-let words = str.split(" ");
-var maxCount = 0;
-
-for(let i=0;i<words.length; i++){
-  if(words[i].length > maxCount){
-    maxCount = words[i].length;
-  }
-}
-  return maxCount;
+  return Math.max(...str.split(" ").map(word => word.length));
 }
 
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
