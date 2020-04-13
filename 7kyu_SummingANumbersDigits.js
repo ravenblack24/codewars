@@ -23,15 +23,12 @@ Test.assertEquals(sumDigits(800000009), 17);
 function sumDigits(number) {
 
   let sum = 0;
-  
-  // convert negative numbers to positives as calculation based on absolute values only
-  if(number < 0) {
-    number *= -1;
-  }
+  // Return absolute values to discard negative symbols
+  number = Math.abs(number);
   
   while(number) {
     sum += number % 10;
-    number = Math.floor(number/10);
+    number = Math.floor(number / 10);
   }
 
   return sum;
