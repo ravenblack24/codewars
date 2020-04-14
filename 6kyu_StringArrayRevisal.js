@@ -79,33 +79,5 @@ function randArray() {
 */
 
 function dup(s) {
-  const regex = /(.)\1{1,}/g; // matches occurences of more than 1 of the same letter
-  const replaceList = [];  // array to contain final strings
-  
-  for(let i = 0; i<s.length;i++) {  
-      
-      if(regex.test(s[i])) {      
-        // there are duplicates in this string
-
-        const tempArray = s[i].match(regex);  // all occurences of duplicate letters
-        let newString = "";  
-           
-        for(let j = 0; j<tempArray.length; j++) {
-           // run through each set of duplicates
-
-           const startIndex = s[i].indexOf(tempArray[j]); // identify index of first letter occurence
-           newString = s[i].replace(s[i].substring(startIndex, startIndex+(tempArray[j].length)), tempArray[j].slice(0,1)); // replace duplicates with a single letter   
-           s[i] = newString;  
-      
-        } 
-        replaceList.push(s[i]);  // add duplicate free string to final array
-      }
-      else {        
-        // no duplicates in this string
-
-        replaceList.push(s[i]); // add string to final array 
-      }
-  } 
-  return replaceList;  
-  
+  return s.map((item) => item.replace(/(.)(?=\1)/g, ''));
 }
