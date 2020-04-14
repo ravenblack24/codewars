@@ -50,6 +50,6 @@ function capitalizeRT13x(s,arr){
 */
 
 function capitalize(s,arr){
-  const myString = s.split("").map((letter, i) => {return (arr.indexOf(i) != -1) ? letter.toUpperCase() : letter }).join("");
+  const myString = s.split("").map((letter, i) => {return (arr.includes(i)) ? letter.toUpperCase() : letter }).join("");
   return myString;
 };
