@@ -29,25 +29,21 @@ Test.describe("GodTest", function() {
 });
 
 */
+
 class God{
 /**
  * @returns Human[]
  */
   static create(){
-    let man = Object.create(Man.prototype);
-    let woman = Object.create(Woman.prototype);
-    return [man, woman];
+      let man = new Man();
+      let woman = new Woman();
+      return [man, woman];
   }
 }
 
-function Human() { }
-
-Human.prototype = {
-  constructor: Human
-}
-
-function Man() { }
-function Woman() { }
+class Human {}
+class Man extends Human {}
+class Woman extends Human {}
 
 Man.prototype = Object.create(Human.prototype);
 Man.prototype.constructor = Man;
