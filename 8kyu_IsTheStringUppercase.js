@@ -78,6 +78,6 @@ Test.describe('Random Tests', _ => {
 */
 
 String.prototype.isUpperCase = function() {
-  let regex = /[a-z]/g;
-  return regex.test(this) ? false: true;
+  let regex = /^[^a-z]+$/g;
+  return regex.test(this);
 }
