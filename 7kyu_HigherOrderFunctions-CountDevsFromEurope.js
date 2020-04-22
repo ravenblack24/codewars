@@ -52,9 +52,6 @@ Test.assertEquals(countDevelopers(list2), countDevelopersSolution(list2));
 
 function countDevelopers(list) {
   return list.reduce((count, dev) => {
-    if(dev.continent == "Europe") {
-      return (dev.language == "JavaScript") ? count += 1 : count;
-    }
-     return count; 
+    return (dev.continent == "Europe") && (dev.language == "JavaScript") ? count += 1 : count;
     },0); 
 }
