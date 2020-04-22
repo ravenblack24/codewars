@@ -73,14 +73,6 @@ Test.assertDeepEquals(findSenior(list5), findSeniorSolution(list5));
 */
 
 function findSenior(list) {
-  
-  let oldestAge = 0;
-  
-  list.forEach((element) => {
-    if (element.age > oldestAge) {
-        oldestAge = element.age;
-      }
-  });
-  
+  let oldestAge = Math.max(...list.map((element) => element.age));
   return list.filter((oldestDev => oldestDev.age == oldestAge));
 }
