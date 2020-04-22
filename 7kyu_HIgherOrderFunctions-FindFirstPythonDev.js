@@ -49,6 +49,6 @@ Test.assertEquals(getFirstPython(list3), getFirstPythonSolution(list3));
 */
 
 function getFirstPython(list) {
-  const index = list.findIndex((attendee) =>  attendee.language === "Python");
-  return (index > -1) ? `${list[index].firstName}, ${list[index].country}` : 'There will be no Python developers';
+  const index = list.find((attendee) =>  attendee.language === "Python");
+  return (index) ? `${index.firstName}, ${index.country}` : 'There will be no Python developers';
 }
