@@ -67,15 +67,11 @@ function isLanguageDiverse(list) {
   // Store count of languages in array
   const langCount = representedLangs.reduce((sum, repLang) => { 
   
-  let filterArray = langs.filter(devLang => devLang == repLang);
-  return sum.concat(filterArray.length);
+    let filterArray = langs.filter(devLang => devLang == repLang);
+    return sum.concat(filterArray.length);
       
   },[])
   
-  // Determine half of largest count value
-  const halfMax = (Math.max(...langCount))/2;
-  
-  // Check language counts are all at least half the largest count
-  return langCount.every((item) => { return item >= halfMax })
-  
+  // Check if smallest lang count is at least half the largest lang count
+  return (Math.min(...langCount) >= (Math.max(...langCount)/2));
 }
