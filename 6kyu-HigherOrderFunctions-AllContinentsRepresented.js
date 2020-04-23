@@ -74,9 +74,9 @@ Test.assertEquals(allContinents(list5), allContinentsSolution(list5));
 function allContinents(list) {
   const continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];  
  
-  const devContinents = list.map((item) => {
-      return item.continent;
+  const devContinents = list.map((dev) => {
+      return dev.continent;
   })
 
-  return continents.every((item) => devContinents.includes(item)) 
+  return continents.every((location) => devContinents.includes(location)) 
 }
