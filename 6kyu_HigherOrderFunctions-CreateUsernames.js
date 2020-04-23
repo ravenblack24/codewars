@@ -60,15 +60,13 @@ const actual3 = addUsername(list3);
 Test.assertDeepEquals(actual3, expected3);
 */
 function addUsername(list) {
-  const resultArray = [...list];
   
-  resultArray.forEach((attendee) => {   
-    let birthYear = (new Date().getFullYear()) - attendee.age;
+  return list.map((attendee) => {   
     let first = attendee.firstName.toLowerCase();
-    let last = attendee.lastName.toLowerCase().slice(0,1);
+    let last = attendee.lastName[0].toLowerCase();
+    let birthYear = (new Date().getFullYear()) - attendee.age;
     
-    return attendee["username"] = `${first}${last}${birthYear}`;  
+    attendee.username = `${first}${last}${birthYear}`; 
+    return attendee;  
   })
-
-  return resultArray;
 }
