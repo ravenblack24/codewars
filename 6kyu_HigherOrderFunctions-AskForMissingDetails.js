@@ -79,13 +79,9 @@ function askForMissingDetails(list) {
     
        let index = Object.values(item).indexOf(null);
        const keys = Object.keys(item);
-       let missingWord = keys[index];
-   
-       item.question = `Hi, could you please provide your ${missingWord}.`
-   
+       item.question = `Hi, could you please provide your ${keys[index]}.`
        return item;
     }
     
   }, []);
-
 }
