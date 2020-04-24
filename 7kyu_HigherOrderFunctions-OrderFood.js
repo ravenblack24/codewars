@@ -67,12 +67,12 @@ Test.assertDeepEquals(orderFood(list1), orderFoodSolution(list1));
 console.log('List of developers: ', JSON.stringify(list2));
 Test.assertDeepEquals(orderFood(list2), orderFoodSolution(list2));
 */
+
 function orderFood(list) {
-  const result = {};
   
-  list.forEach((attendee) => {
-    return (result[attendee.meal]) ? result[attendee.meal]++ : result[attendee.meal] = 1;
-  });
+  return list.reduce((foodOptions, attendee) => {
+    foodOptions[attendee.meal] = foodOptions[attendee.meal]+1 || 1;
+    return foodOptions;
+  }, {});
   
-  return result;
 }
