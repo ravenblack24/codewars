@@ -70,11 +70,10 @@ console.log('List of developers: ', JSON.stringify(list4));
 Test.assertDeepEquals(askForMissingDetails(list4), askForMissingDetailsSolution(list4));
 
 */
+
 function askForMissingDetails(list) {
-  const items = [...list];
   
-  
-  const nullItems = list.filter((item) => {
+  return list.filter((item) => {
  
     if(Object.values(item).includes(null)) {
     
@@ -89,4 +88,4 @@ function askForMissingDetails(list) {
     
   }, []);
 
-  return nullItems;
+}
