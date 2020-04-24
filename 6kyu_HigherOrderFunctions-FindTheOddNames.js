@@ -61,13 +61,9 @@ const myList = [...list];
 
   return myList.reduce((oddResults, attendee) => {
     
-    const letterArray = attendee.firstName.split("");
-    
-    const asciiCount = letterArray.reduce((count, letter) => {
-      count += letter.charCodeAt();
-      return count;
-    }
-    , 0);
+    const asciiCount = attendee.firstName.split("").reduce((count, letter) => {
+      return count + letter.charCodeAt();
+    }, 0);
     
     return (asciiCount % 2 != 0) ? oddResults.concat(attendee) : oddResults;
 
