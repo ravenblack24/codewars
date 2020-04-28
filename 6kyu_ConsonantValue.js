@@ -52,15 +52,15 @@ function randomWord(r) {
 */
 
 function solve(s) {
-  const mapping = [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  const mapping = " abcdefghijklmnopqrstuvwxyz";
   // Replace vowels with space. Break string at space into consonant substrings
   const consonantArray = s.replace(/[aeiou]/g, " ").split(" ");
   
   // Return values of all substrings
   const sumOfSubStrings = consonantArray.reduce((count, item) => { 
     // Return value of all letters in substring
-    const subTotal = item.split("").reduce((countLetter, letter) => {
-        return countLetter+=mapping.indexOf(letter);
+    const subTotal = item.split("").reduce((letterSum, letter) => {
+        return letterSum+=mapping.indexOf(letter);
     },0);
     return count.concat(subTotal);
   },[]);
