@@ -53,16 +53,17 @@ function randomWord(r) {
 
 function solve(s) {
   const mapping = " abcdefghijklmnopqrstuvwxyz";
-  // Replace vowels with space. Break string at space into consonant substrings
-  const consonantArray = s.replace(/[aeiou]/g, " ").split(" ");
   
-  // Return values of all substrings
+  // Break into a substring each time there is a vowel
+  const consonantArray = s.split(/[aeiou]/g);
+  
+  // Return sums of all substrings
   const sumOfSubStrings = consonantArray.reduce((count, item) => { 
-    // Return value of all letters in substring
-    const subTotal = item.split("").reduce((letterSum, letter) => {
-        return letterSum+=mapping.indexOf(letter);
-    },0);
-    return count.concat(subTotal);
+      // Return value of all letters in substring
+      const subTotal = item.split("").reduce((letterSum, letter) => {
+          return letterSum+=mapping.indexOf(letter);
+      },0);
+      return count.concat(subTotal);
   },[]);
   
   // Return largest substring count
