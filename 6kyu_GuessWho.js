@@ -161,6 +161,7 @@ for(rtests=0;rtests<=50;rtests++){
 }
 
 */
+
 class GuessWho {
   constructor(character){
       this._characteristic = [["Jean-Claude",["Male","Glasses","Brown eyes","Bald","White hair","Small mouth","Small nose"]],
@@ -191,88 +192,42 @@ class GuessWho {
       this._rounds = 0;
   }
 }
+
 GuessWho.prototype.guess = function (guess){
-  
   this._rounds++;
-  let attempt = guess;  
-  let answer = this._answer;
-  console.log(answer);
-  console.log("Guess: "+ attempt);  
+  var result = [];
 
   // check if guess matches answer
-  if(attempt == answer[0]) {
-    console.log("Answer name match!");
-    return ["Correct! in " + this._rounds + " turns"];
+  if(this._answer[0] == guess) {
+      return ["Correct! in "+this._rounds+" turns"];
   } else {
-     const indexOf = this._characteristic.findIndex(element => element.includes(guess));
-     console.log(indexOf);
-     if(indexOf > -1) {
-       this._characteristic.splice(indexOf, 1);
-     }
+      const indexOf = this._characteristic.findIndex(element => element.includes(guess));
+      if(indexOf > -1) {
+          this._characteristic.splice(indexOf, 1);
+      }
   }
   
-  
-  var result = [];
-  
-  // check whether answer attribute contains guess
-  if(answer[1].includes(guess)) {
-    console.log("Answer contains attribute");
-    result = this.filterCharacteristics(guess);
+  // If answer attribute contains guess, filter accordingly
+  if(this._answer[1].includes(guess)) {
+      result = this.filterCharacteristics(guess, true);
   } else {
-    // attribute isn't within answer, so find all matches which don't include it
-    console.log("No matching attribute found in answer: " + guess);
-    result = this.filterNonCharacteristics(guess);
+      result = this.filterCharacteristics(guess, false);
   }
-  
   return result;
 };
 
-// Determine whether guess is a character name
-GuessWho.prototype.checkName = function (guess){
-  let returnArray = [];
-  if(this._answer == guess) {
-      returnArray.push("Correct! in " + this._rounds + " turns");
-  }
-}
-
-GuessWho.prototype.filterCharacteristics = function (searchTerm){
+GuessWho.prototype.filterCharacteristics = function (searchTerm, include){
   let characterArray = [];
-  let startArray = [...this._characteristic];
   let returnArray = [];
-
-  startArray.forEach((item) => {
-  
-  if(item[1].includes(searchTerm)) {
-    console.log("Match found in filterCharacteristics: " + item);
-    characterArray.push(item);
-    returnArray.push(item[0]);
-  }
-     
+  this._characteristic.forEach((item) => {
+    if(item[1].includes(searchTerm) === include) {
+        characterArray.push(item);
+        returnArray.push(item[0]);
+    }   
   });
-  // Update characteristic array to match filtered results
-  this._characteristic = characterArray;
-
-  // return name matches from filter
-  return returnArray;
-}
-
-GuessWho.prototype.filterNonCharacteristics = function (searchTerm){
-  let characterArray = [];
-  let startArray = [...this._characteristic];
-  let returnArray = [];
-
-  startArray.forEach((item) => {
   
-  if(!item[1].includes(searchTerm)) {
-    console.log("Matches found in filterNonCharacteristics");
-    characterArray.push(item);
-    returnArray.push(item[0]);
-  }
-  });
-  // Update characteristic array to match filtered results
+  // Update characteristic array to reflect matches
   this._characteristic = characterArray;
-
-  console.log(this._characteristic);
-  // return name matches from filter
+  // return character matches
   return returnArray;
 }
