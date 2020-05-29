@@ -54,5 +54,5 @@ var list5 = [
 
 */
 function isSameLanguage(list) {
- return list.every((element) => element.language == list[0].language)
+ return list.every((element) => element.language == list[0].language);
 }
