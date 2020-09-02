@@ -1,4 +1,4 @@
-# codewars challenges
+# Codewars challenges
 > Repository of Codewars javascript solutions
 
 ## Table of contents
